@@ -17,26 +17,24 @@
 /* Estilos para los botones de películas */
 .movie-button {
   display: block;
-  width: 70%; /* Ancho del botón */
-  margin: 0 auto 10px; /* Centra horizontalmente y agrega separación en la parte inferior */
-  padding: 8px; /* Espaciado interno */
-  background-color: #007bff; /* Color de fondo predeterminado */
-  color: #fff; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave del color de fondo y de la sombra */
-  text-decoration: none; /* Elimina el subrayado */
+  width: 70%;
+  margin: 0 auto 10px;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
 }
 
-/* Efecto de sombra cuando se pasa el mouse sobre el botón */
 .movie-button:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el ratón */
+  background-color: #0056b3;
 }
 
-/* Efecto de sombra cuando se selecciona el botón */
 .movie-button:active {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Sombra más oscura al hacer clic */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Estilos para el contenedor de asientos */
@@ -49,6 +47,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para los botones de los asientos */
 .seats-container button {
   background-color: #007bff;
   color: #fff;
@@ -56,11 +55,23 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 0.25rem;
-  padding: 0.5rem;
+  padding: 10px;
+  font-size: 16px;
+  width: 40px;
 }
 
 .seats-container button:hover {
   background-color: #0056b3;
+}
+
+/* Estilos para los botones de los asientos disponibles */
+.seats-container button.available {
+  background-color: #28a745;
+}
+
+/* Estilos para los botones de los asientos ocupados */
+.seats-container button.unavailable {
+  background-color: #dc3545; /* Prioridad sobre otros estilos */
 }
 
 /* Estilos para el contenedor del ticket */
