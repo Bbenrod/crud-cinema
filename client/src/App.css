@@ -1,9 +1,11 @@
+/* Estilos para el contenedor principal */
 .container {
   display: flex;
 }
 
+/* Estilos para el contenedor de películas */
 .movies-container {
-  width: 25%; /* Ancho para el contenedor de películas */
+  width: 25%;
   margin: 20px;
   padding: 20px;
   background-color: #fff;
@@ -12,73 +14,78 @@
   text-align: center;
 }
 
-.movies-container h2 {
-  margin-top: 0;
-}
-
-.seating-container {
-  width: calc(10 * (30px + 4px)); /* Ancho de la cuadrícula de asientos */
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/*
-.seating {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.seat {
-  width: 30px; /* Ancho fijo de cada asiento 
-  height: 30px;
-  border: 1px solid #ccc;
-  margin: 2px;
-  cursor: pointer;
-  box-sizing: border-box; /* Esto evita que el borde afecte al tamaño total 
-}
-
-button {
-  margin-top: 20px;
-}
-
-.seat.selected {
-  background-color: #ffcc66; /* Cambia el color a tu preferencia 
-}
-
-.seat.reserved {
-  background-color: #ff6666; /* Cambiar color a rojo 
-}
-*/
-
-.movie {
+/* Estilos para los botones de películas */
+.movie-button {
+  display: block;
+  width: 70%; /* Ancho del botón */
+  margin: 0 auto 10px; /* Centra horizontalmente y agrega separación en la parte inferior */
+  padding: 8px; /* Espaciado interno */
   background-color: #007bff; /* Color de fondo predeterminado */
   color: #fff; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interno */
   border: none; /* Sin borde */
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  margin-bottom: 10px; /* Espacio entre películas */
-  transition: background-color 0.3s; /* Transición suave del color de fondo */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave del color de fondo y de la sombra */
+  text-decoration: none; /* Elimina el subrayado */
 }
 
-.movie.selected {
-  background-color: #0056b3; /* Color de fondo cuando está seleccionado */
+/* Efecto de sombra cuando se pasa el mouse sobre el botón */
+.movie-button:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el ratón */
 }
-/*
-.movie:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el ratón *
-}*/
+
+/* Efecto de sombra cuando se selecciona el botón */
+.movie-button:active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Sombra más oscura al hacer clic */
+}
+
+/* Estilos para el contenedor de asientos */
+.seats-container {
+  width: 60%;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.seats-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.25rem;
+  padding: 0.5rem;
+}
+
+.seats-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el contenedor del ticket */
+.ticket-container {
+  width: 25%;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-container h2 {
+  margin-bottom: 1rem;
+}
+
+.ticket-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.ticket-container button:hover {
+  background-color: #0056b3;
+}

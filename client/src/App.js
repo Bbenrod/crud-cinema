@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import MovieContainer from './cinema/MovieContainer'; // Importa MovieContainer
-import SeatingContainer from './cinema/SeatingContainer';
+import Movies from './cinema/Movies'; // Importa el componente Movies
+import Seats from './cinema/Seats'; // Importa el componente Seats
+import Ticket from './cinema/Ticket'; // Importa el componente Ticket
 
 const App = () => {
   const [functions, setFunctions] = useState([]);
@@ -16,8 +17,9 @@ const App = () => {
 
   return (
     <div className="container">
-      <MovieContainer functions={functions} /> {/* Usa MovieContainer */}
-      <SeatingContainer />
+      <Movies functions={functions} />
+      <Seats />
+      <Ticket />
     </div>
   );
 };
