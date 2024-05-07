@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import MoviesContainer from './cinema/MoviesContainer';
+import MoviesContainer from './cinema/MovieContainer';
 import SeatingContainer from './cinema/SeatingContainer';
 
 const App = () => {
