@@ -1,37 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import MoviesContainer from './cinema/MovieContainer';
+import MovieContainer from './cinema/MovieContainer'; // Importa MovieContainer
 import SeatingContainer from './cinema/SeatingContainer';
 
 const App = () => {
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [reservedSeats, setReservedSeats] = useState([]);
+  const [functions, setFunctions] = useState([]);
 
-  const selectMovie = (movie) => {
-    setSelectedMovie(movie);
-  };
-
-  const toggleSeatSelection = (seatKey) => {
-    if (!reservedSeats.includes(seatKey)) {
-      setReservedSeats(prevSeats => [...prevSeats, seatKey]);
-    }
-  };
-
-  const reserveSeats = () => {
-    alert('Los asientos han sido reservados correctamente.');
-    // Aquí puedes agregar la lógica para enviar la reserva al servidor
-    setReservedSeats([]);
-  };
+  useEffect(() => {
+    // Realizar la solicitud a la API para obtener las funciones disponibles
+    fetch('http://localhost:8080/api/functions')
+      .then(response => response.json())
+      .then(data => setFunctions(data))
+      .catch(error => console.error('Error fetching functions:', error));
+  }, []);
 
   return (
     <div className="container">
-      <MoviesContainer movies={['Titanic', 'El Padrino', 'Forrest Gump']} selectMovie={selectMovie} />
-      <SeatingContainer
-        rows={6}
-        seatsPerRow={10}
-        reservedSeats={reservedSeats}
-        toggleSeatSelection={toggleSeatSelection}
-      />
+      <MovieContainer functions={functions} /> {/* Usa MovieContainer */}
+      <SeatingContainer />
     </div>
   );
 };
