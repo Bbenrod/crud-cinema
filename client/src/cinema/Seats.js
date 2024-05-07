@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-const Seats = () => {
+const Seats = ({ selectedMovie }) => {
   const [seats, setSeats] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   useEffect(() => {
-    // Realiza la solicitud a la API para obtener los asientos de la función 1
-    fetch('http://localhost:8080/api/functions/1/seats')
-      .then(response => response.json())
-      .then(data => {
-        console.log('Asientos recibidos:', data);
-        setSeats(data);
-      })
-      .catch(error => console.error('Error fetching seats:', error));
-  }, []);
+    if (selectedMovie) {
+      // Realiza la solicitud a la API para obtener los asientos de la película seleccionada
+      fetch(`http://localhost:8080/api/functions/${selectedMovie}/seats`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Asientos recibidos:', data);
+          setSeats(data);
+        })
+        .catch(error => console.error('Error fetching seats:', error));
+    }
+  }, [selectedMovie]);
 
   // Función para organizar los asientos por filas
   const organizeSeatsByRows = () => {
@@ -25,6 +28,14 @@ const Seats = () => {
 
   const organizedSeats = organizeSeatsByRows();
 
+  // Función para manejar la selección de asientos
+  const handleSeatSelection = seat => {
+    if (seat.availability) {
+      const updatedSelectedSeats = [...selectedSeats, seat];
+      setSelectedSeats(updatedSelectedSeats);
+    }
+  };
+
   return (
     <div className="seats-container">
       <h2>Selecciona tus asientos</h2>
@@ -35,8 +46,9 @@ const Seats = () => {
             {row.map(seat => (
               <button
                 key={seat._id}
-                className={`seat-btn ${seat.availability ? 'available' : 'unavailable'}`}
+                className={`seat-btn ${seat.availability ? 'available' : 'unavailable'} ${selectedSeats.includes(seat) ? 'selected' : ''}`}
                 disabled={!seat.availability}
+                onClick={() => handleSeatSelection(seat)}
               >
                 {seat.seat_id}
               </button>

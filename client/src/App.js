@@ -5,8 +5,8 @@ import Seats from './cinema/Seats'; // Importa el componente Seats
 import Ticket from './cinema/Ticket'; // Importa el componente Ticket
 
 const App = () => {
-  const [selectedMovie, setSelectedMovie] = useState(null); // Estado para almacenar la película seleccionada
   const [functions, setFunctions] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null); // Agrega estado para la película seleccionada
 
   useEffect(() => {
     // Realizar la solicitud a la API para obtener las funciones disponibles
@@ -18,10 +18,8 @@ const App = () => {
 
   return (
     <div className="container">
-      {/* Pasa las funciones disponibles al componente Movies */}
-      <Movies functions={functions} setSelectedMovie={setSelectedMovie} />
-      {/* Pasa la película seleccionada al componente Seats */}
-      <Seats selectedMovie={selectedMovie} />
+      <Movies functions={functions} setSelectedMovie={setSelectedMovie} /> {/* Pasa setSelectedMovie como prop */}
+      <Seats selectedMovie={selectedMovie} /> {/* Pasa selectedMovie como prop */}
       <Ticket />
     </div>
   );

@@ -20,13 +20,17 @@
   width: 70%;
   margin: 0 auto 10px;
   padding: 8px;
-  background-color: #007bff;
+  background-color: #6c757d; /* Gris para botones de película */
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
   text-decoration: none;
+}
+
+.movie-button.selected {
+  background-color: #007bff; /* Azul para botones de película seleccionados */
 }
 
 .movie-button:hover {
@@ -47,7 +51,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para los botones de los asientos */
 .seats-container button {
   background-color: #007bff;
   color: #fff;
@@ -55,9 +58,9 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 0.25rem;
-  padding: 10px;
-  font-size: 16px;
-  width: 40px;
+  padding: 10px; /* Ajusta el padding para hacer los botones más grandes */
+  font-size: 16px; /* Ajusta el tamaño de la fuente */
+  width: 40px; /* Establece un ancho fijo para los botones */
 }
 
 .seats-container button:hover {
@@ -66,12 +69,17 @@
 
 /* Estilos para los botones de los asientos disponibles */
 .seats-container button.available {
-  background-color: #28a745;
+  background-color: #28a745; /* Verde para los asientos disponibles */
 }
 
 /* Estilos para los botones de los asientos ocupados */
 .seats-container button.unavailable {
-  background-color: #dc3545; /* Prioridad sobre otros estilos */
+  background-color: #dc3545; /* Rojo para los asientos ocupados */
+}
+
+/* Estilos para los botones de los asientos seleccionados */
+.seats-container button.selected {
+  background-color: #007bff; /* Azul para los asientos seleccionados */
 }
 
 /* Estilos para el contenedor del ticket */
