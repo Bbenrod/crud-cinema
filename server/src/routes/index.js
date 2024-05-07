@@ -8,7 +8,6 @@ router.get("/", (req, res) => {
 });
 
 router.use(`/${FUNCTION_ROUTE_NAME}`, function_router);
-router.use(`/${SEAT_ROUTE_NAME}`, seat_router);
 
 const crearRutas = (app) => {
     app.use("/api", router);

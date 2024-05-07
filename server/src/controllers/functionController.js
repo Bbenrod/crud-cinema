@@ -24,7 +24,9 @@ exports.createFunction = async (req, res) => {
 // Obtener una función por su ID
 exports.getFunctionById = async (req, res) => {
     try {
-        const func = await Function.findById(req.params.id);
+        const func = await Function.findOne({
+            function_id: req.params.id,
+        });
         if (!func) {
             return res.status(404).json({ message: "Función no encontrada" });
         }
