@@ -6,6 +6,8 @@ const {
     updateFunction,
     deleteFunction,
 } = require("../controllers/functionController");
+const { seat_router, SEAT_ROUTE_NAME } = require("./seatRoute");
+
 
 const function_router = express.Router();
 
@@ -22,5 +24,7 @@ function_router.get("/:id", getFunctionById);
 function_router.patch("/:id", updateFunction);
 
 function_router.delete("/:id", deleteFunction);
+
+function_router.use(`/:functionId/${SEAT_ROUTE_NAME}`, seat_router);
 
 module.exports = { function_router, FUNCTION_ROUTE_NAME };
