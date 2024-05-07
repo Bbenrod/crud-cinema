@@ -13,11 +13,9 @@ mongoose
 
 async function initDB() {
     try {
-        // Eliminar todas las funciones y asientos existentes en la base de datos
         await Function.deleteMany({});
         await Seat.deleteMany({});
 
-        // Crear tres películas con function_id único
         const movieData = [
             { function_id: 1, movie_title: "Batman" },
             { function_id: 2, movie_title: "Endgame" },
@@ -25,13 +23,12 @@ async function initDB() {
         ];
         const movies = await Function.create(movieData);
 
-        // Crear asientos para cada película con disponibilidad aleatoria
         const rows = ["A", "B", "C", "D", "E", "F", "G"];
         for (let movie of movies) {
             for (let row of rows) {
                 for (let seatNumber = 1; seatNumber <= 7; seatNumber++) {
                     const seatId = `${row}${seatNumber}`;
-                    const availability = Math.random() < 0.5; // Genera true o false aleatoriamente
+                    const availability = Math.random() < 0.5;
                     await Seat.create({
                         function_id: movie.function_id,
                         seat_id: seatId,

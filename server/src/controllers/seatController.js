@@ -1,64 +1,56 @@
 const Seat = require("../models/seatModel");
 
 // Obtener todos los asientos
-exports.getAllSeats = async (req, res) => {
+exports.getSeats = async (req, res) => {
     try {
-        const seats = await Seat.find();
+        const seats = await Seat.find({
+            function_id: req.params.functionId,
+        });
+
         res.json(seats);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-// Crear un nuevo asiento
-exports.createSeat = async (req, res) => {
+exports.getAvaliableSeats = async (req, res) => {
     try {
-        const newSeat = new Seat(req.body);
-        await newSeat.save();
-        res.status(201).json(newSeat);
+        const seats = await Seat.find({
+            function_id: req.params.functionId,
+        });
+
+        res.json(seats.filter((seat) => seat.availability));
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-// Obtener un asiento por su ID
-exports.getSeatById = async (req, res) => {
+exports.buySeats = async (req, res) => {
+    const seatIds = req.body.seat_ids; // Suponiendo que los IDs de los asientos se reciben en el cuerpo de la solicitud
+
     try {
-        const seat = await Seat.findById(req.params.id);
-        if (!seat) {
-            return res.status(404).json({ message: "Asiento no encontrado" });
+        // Verificar si se proporcionaron los IDs de los asientos
+        if (!seatIds || seatIds.length === 0) {
+            return res.status(400).json({
+                message:
+                    "Se requiere al menos un ID de asiento para realizar la compra",
+            });
         }
-        res.json(seat);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
 
-// Actualizar un asiento por su ID
-exports.updateSeat = async (req, res) => {
-    try {
-        const updatedSeat = await Seat.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
+        // Actualizar la disponibilidad de los asientos
+        const updateResult = await Seat.updateMany(
+            { _id: { $in: seatIds } }, // Filtrar por los IDs de los asientos recibidos
+            { $set: { availability: false } } // Actualizar la disponibilidad a false
         );
-        if (!updatedSeat) {
-            return res.status(404).json({ message: "Asiento no encontrado" });
-        }
-        res.json(updatedSeat);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
 
-// Eliminar un asiento por su ID
-exports.deleteSeat = async (req, res) => {
-    try {
-        const deletedSeat = await Seat.findByIdAndDelete(req.params.id);
-        if (!deletedSeat) {
-            return res.status(404).json({ message: "Asiento no encontrado" });
+        // Verificar si se actualizaron asientos
+        if (!updateResult || updateResult.nModified === 0) {
+            return res
+                .status(404)
+                .json({ message: "No se pudieron comprar los asientos" });
         }
-        res.status(204).end();
+
+        res.json({ message: "Asientos comprados exitosamente" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
