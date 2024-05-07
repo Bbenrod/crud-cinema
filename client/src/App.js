@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import MoviesContainer from './MoviesContainer';
-import SeatingContainer from './SeatingContainer';
+import MoviesContainer from './cinema/MoviesContainer';
+import SeatingContainer from './cinema/SeatingContainer';
 
 const App = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
