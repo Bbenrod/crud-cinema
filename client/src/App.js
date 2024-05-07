@@ -32,7 +32,6 @@ const App = () => {
         reservedSeats={reservedSeats}
         toggleSeatSelection={toggleSeatSelection}
       />
-      <button id="reserve-btn" onClick={reserveSeats}>Reservar Asientos</button>
     </div>
   );
 };
