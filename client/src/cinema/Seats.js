@@ -5,6 +5,7 @@ const Seats = ({ selectedMovie }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   useEffect(() => {
+    console.log('selectedMovie:', selectedMovie); // Verificar el valor de selectedMovie
     if (selectedMovie) {
       // Realiza la solicitud a la API para obtener los asientos de la película seleccionada
       fetch(`http://localhost:8080/api/functions/${selectedMovie}/seats`)

@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 
-const Ticket = ({ selectedMovie, selectedSeats }) => {
-  const [purchased, setPurchased] = useState(false); // Estado para controlar si se han comprado los boletos
+const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
+  const [purchased, setPurchased] = useState(false);
 
   // Función para manejar la compra de boletos
   const handlePurchase = () => {
-    // Lógica para realizar la compra de los boletos (aquí puedes agregar tu lógica específica)
-    // Una vez que se completa la compra, establece el estado purchased en true
     setPurchased(true);
   };
 
-  const selectedSeatsCount = selectedSeats ? selectedSeats.length : 0; // Verifica si selectedSeats es null o undefined
+  // Función para obtener el nombre de la película a partir del ID de la función
+  const getMovieTitle = (functionId) => {
+    const movie = functions.find(movie => movie.function_id === functionId);
+    return movie ? movie.movie_title : 'Seleccione una película';
+  };
+
+  const selectedSeatsCount = selectedSeats ? selectedSeats.length : 0;
 
   return (
     <div className="ticket-container">
@@ -18,7 +22,7 @@ const Ticket = ({ selectedMovie, selectedSeats }) => {
       <div className="summary">
         <div>
           <h3>Película</h3>
-          <p>{selectedMovie ? selectedMovie.movie_title : 'Seleccione una película'}</p>
+          <p>{selectedMovie ? getMovieTitle(selectedMovie) : 'Seleccione una película'}</p> {/* Utilizar la función getMovieTitle para obtener el nombre de la película */}
         </div>
         <div>
           <h3>Asientos</h3>

@@ -1,6 +1,8 @@
-import React from 'react';
-
 const Movies = ({ functions, setSelectedMovie, selectedMovie }) => {
+  const handleMovieSelection = (movieId) => {
+    setSelectedMovie(movieId);
+  };
+
   return (
     <div className="movies-container">
       <h2>Películas</h2>
@@ -8,7 +10,7 @@ const Movies = ({ functions, setSelectedMovie, selectedMovie }) => {
         <button
           key={movie._id}
           className={`movie-button ${selectedMovie === movie.function_id ? 'selected' : ''}`}
-          onClick={() => setSelectedMovie(movie.function_id)}
+          onClick={() => handleMovieSelection(movie.function_id)} // Usar movie.function_id en lugar de movie._id
         >
           {movie.movie_title}
         </button>

@@ -17,9 +17,9 @@ const App = () => {
 
   return (
     <div className="container">
-      <Movies functions={functions} setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} /> {/* Asegúrate de pasar selectedMovie como prop */}
+      <Movies functions={functions} setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} />
       <Seats selectedMovie={selectedMovie} />
-      <Ticket />
+      <Ticket selectedMovie={selectedMovie} functions={functions} /> {/* Actualizamos la prop pasada a Ticket */}
     </div>
   );
 };
