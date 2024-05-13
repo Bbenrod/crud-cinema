@@ -27,6 +27,7 @@ exports.getAvaliableSeats = async (req, res) => {
 
 exports.buySeats = async (req, res) => {
     const seatIds = req.body.seat_ids; // Suponiendo que los IDs de los asientos se reciben en el cuerpo de la solicitud
+    console.log(seatIds);
 
     try {
         // Verificar si se proporcionaron los IDs de los asientos
@@ -39,7 +40,7 @@ exports.buySeats = async (req, res) => {
 
         // Actualizar la disponibilidad de los asientos
         const updateResult = await Seat.updateMany(
-            { _id: { $in: seatIds } }, // Filtrar por los IDs de los asientos recibidos
+            { seat_id: { $in: seatIds } }, // Filtrar por los IDs de los asientos recibidos
             { $set: { availability: false } } // Actualizar la disponibilidad a false
         );
 

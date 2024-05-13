@@ -1,5 +1,9 @@
 const express = require("express");
-const { getAvaliableSeats, getSeats } = require("../controllers/seatController");
+const {
+    getAvaliableSeats,
+    getSeats,
+    buySeats,
+} = require("../controllers/seatController");
 
 const seat_router = express.Router({ mergeParams: true });
 
@@ -11,12 +15,6 @@ seat_router.get("/", getSeats);
 
 seat_router.get("/avaliable", getAvaliableSeats);
 
-// seat_router.post("/", createSeat);
-
-// seat_router.get("/:id", getSeatById);
-
-// seat_router.patch("/:id", updateSeat);
-
-// seat_router.delete("/:id", deleteSeat);
+seat_router.post("/buy", buySeats);
 
 module.exports = { seat_router, SEAT_ROUTE_NAME };
