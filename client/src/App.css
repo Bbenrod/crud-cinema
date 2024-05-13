@@ -33,10 +33,6 @@
   background-color: #007bff; /* Azul para botones de película seleccionados */
 }
 
-.movie-button:hover {
-  background-color: #0056b3;
-}
-
 .movie-button:active {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
