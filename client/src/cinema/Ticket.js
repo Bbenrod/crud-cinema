@@ -2,10 +2,41 @@ import React, { useState } from 'react';
 
 const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
   const [purchased, setPurchased] = useState(false);
+  const [error, setError] = useState(null);
 
   // Función para manejar la compra de boletos
-  const handlePurchase = () => {
-    setPurchased(true);
+  const handlePurchase = async () => {
+    if (selectedSeats.length === 0) {
+      setError("Por favor, seleccione al menos un asiento antes de comprar.");
+      return;
+    }
+
+    const functionId = selectedMovie;
+    const requestBody = {
+      seat_ids: selectedSeats
+    };
+
+    try {
+      const response = await fetch(`http://localhost:8080/api/functions/${functionId}/seats/buy`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (response.ok) {
+        setPurchased(true);
+        window.alert('¡Boletos comprados con éxito!');
+        // Reinicia la página después de cerrar el mensaje emergente
+        window.location.reload();
+      } else {
+        setError("Hubo un error al comprar los boletos. Por favor, inténtelo de nuevo más tarde.");
+      }
+    } catch (error) {
+      console.error('Error al realizar la compra:', error);
+      setError("Hubo un error al comprar los boletos. Por favor, inténtelo de nuevo más tarde.");
+    }
   };
 
   // Función para obtener el nombre de la película a partir del ID de la función
@@ -33,8 +64,8 @@ const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
           <p>${selectedSeatsCount * 60}</p>
         </div>
       </div>
-      {!purchased && <button className="purchase-button" onClick={handlePurchase}>Comprar boletos</button>}
-      {purchased && <p>¡Boletos comprados con éxito!</p>}
+      {error && <p className="error">{error}</p>}
+      <button className="purchase-button" onClick={handlePurchase} disabled={purchased}>Comprar boletos</button>
     </div>
   );
 };
