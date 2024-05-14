@@ -8,7 +8,7 @@
   width: 25%;
   margin: 20px;
   padding: 20px;
-  background-color: #fff;
+  background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -40,13 +40,22 @@
 /* Estilos para el contenedor de asientos */
 .seats-container {
   width: 60%;
-  margin: 20px;
+  margin: 20px auto; /* Auto para centrar horizontalmente */
   padding: 20px;
-  background-color: #fff;
+  background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Alinear el contenido al centro */
 }
 
+/* Estilos para el contenedor adicional de los botones de los asientos */
+.seats-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos para los botones de los asientos */
 .seats-container button {
   background-color: #007bff;
   color: #fff;
@@ -54,9 +63,9 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 0.25rem;
-  padding: 10px; /* Ajusta el padding para hacer los botones más grandes */
-  font-size: 16px; /* Ajusta el tamaño de la fuente */
-  width: 40px; /* Establece un ancho fijo para los botones */
+  padding: 10px;
+  font-size: 16px;
+  width: 40px;
 }
 
 .seats-container button:hover {
@@ -65,17 +74,17 @@
 
 /* Estilos para los botones de los asientos disponibles */
 .seats-container button.available {
-  background-color: #28a745; /* Verde para los asientos disponibles */
+  background-color: #28a745;
 }
 
 /* Estilos para los botones de los asientos ocupados */
 .seats-container button.unavailable {
-  background-color: #dc3545; /* Rojo para los asientos ocupados */
+  background-color: #dc3545;
 }
 
 /* Estilos para los botones de los asientos seleccionados */
 .seats-container button.selected {
-  background-color: #007bff; /* Azul para los asientos seleccionados */
+  background-color: #007bff;
 }
 
 /* Estilos para el contenedor del ticket */
@@ -83,13 +92,14 @@
   width: 25%;
   margin: 20px;
   padding: 20px;
-  background-color: #fff;
+  background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .ticket-container h2 {
   margin-bottom: 1rem;
+  color: #007bff; /* Azul para el título */
 }
 
 .ticket-container button {
