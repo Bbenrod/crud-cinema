@@ -114,3 +114,52 @@
 .ticket-container button:hover {
   background-color: #0056b3;
 }
+
+/* Estilos para pantallas más pequeñas */
+@media only screen and (max-width: 816px) {
+  /* Modificaciones para el contenedor principal */
+  .container {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+  }
+  
+  /* Modificaciones para el contenedor de películas */
+  .movies-container {
+    width: 80%; /* Utiliza un ancho más grande para contenedores de películas */
+  }
+  
+  /* Modificaciones para el contenedor del ticket */
+  .ticket-container {
+    width: 80%; /* Utiliza un ancho más grande para contenedores de tickets */
+  }
+  
+  /* Modificaciones para los botones de los asientos */
+  .seats-container button {
+    padding: 8px; /* Tamaño de padding inicial */
+    font-size: 14px; /* Tamaño de fuente inicial */
+    width: 40px; /* Ancho inicial */
+    margin: 4px; /* Margen inicial */
+  }
+}
+
+/* Estilos para pantallas aún más pequeñas */
+@media only screen and (max-width: 600px) {
+  /* Modificaciones adicionales para los botones de los asientos */
+  .seats-container button {
+    padding: 6px; /* Reducir el padding */
+    font-size: 12px; /* Reducir el tamaño del texto */
+    width: 30px; /* Reducir el ancho de los botones */
+    margin: 3px; /* Reducir el margen */
+  }
+}
+
+/* Estilos para pantallas aún más pequeñas */
+@media only screen and (max-width: 400px) {
+  /* Modificaciones adicionales para los botones de los asientos */
+  .seats-container button {
+    padding: 4px; /* Reducir el padding */
+    font-size: 10px; /* Reducir aún más el tamaño del texto */
+    width: 20px; /* Reducir aún más el ancho de los botones */
+    margin: 2px; /* Reducir aún más el margen */
+  }
+}
