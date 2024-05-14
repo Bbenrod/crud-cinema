@@ -7,6 +7,7 @@ import Ticket from './cinema/Ticket';
 const App = () => {
   const [functions, setFunctions] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]); // Agrega estado para los asientos seleccionados
 
   useEffect(() => {
     fetch('http://localhost:8080/api/functions')
@@ -18,8 +19,8 @@ const App = () => {
   return (
     <div className="container">
       <Movies functions={functions} setSelectedMovie={setSelectedMovie} selectedMovie={selectedMovie} />
-      <Seats selectedMovie={selectedMovie} />
-      <Ticket selectedMovie={selectedMovie} functions={functions} /> {/* Actualizamos la prop pasada a Ticket */}
+      <Seats selectedMovie={selectedMovie} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} />
+      <Ticket selectedMovie={selectedMovie} selectedSeats={selectedSeats} functions={functions} /> {/* Pasa selectedSeats como prop */}
     </div>
   );
 };

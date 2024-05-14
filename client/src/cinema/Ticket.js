@@ -9,7 +9,7 @@ const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
   };
 
   // Función para obtener el nombre de la película a partir del ID de la función
-  const getMovieTitle = (functionId) => {
+  const getMovieTitle = functionId => {
     const movie = functions.find(movie => movie.function_id === functionId);
     return movie ? movie.movie_title : 'Seleccione una película';
   };
@@ -22,7 +22,7 @@ const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
       <div className="summary">
         <div>
           <h3>Película</h3>
-          <p>{selectedMovie ? getMovieTitle(selectedMovie) : 'Seleccione una película'}</p> {/* Utilizar la función getMovieTitle para obtener el nombre de la película */}
+          <p>{selectedMovie ? getMovieTitle(selectedMovie) : 'Seleccione una película'}</p>
         </div>
         <div>
           <h3>Asientos</h3>
