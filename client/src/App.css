@@ -1,6 +1,9 @@
 /* Estilos para el contenedor principal */
 .container {
   display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Utiliza toda la altura de la pantalla */
 }
 
 /* Estilos para el contenedor de películas */
@@ -39,13 +42,12 @@
 
 /* Estilos para el contenedor de asientos */
 .seats-container {
-  width: 60%;
-  margin: 20px auto; /* Auto para centrar horizontalmente */
+  width: 80%;
+  margin: 20px auto; /* Centra horizontalmente y añade espacio en la parte superior e inferior */
   padding: 20px;
   background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Alinear el contenido al centro */
 }
 
 /* Estilos para el contenedor adicional de los botones de los asientos */
@@ -64,7 +66,7 @@
   cursor: pointer;
   margin: 0.25rem;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px; /* Tamaño de fuente */
   width: 40px;
 }
 
@@ -117,28 +119,16 @@
 
 /* Estilos para pantallas más pequeñas */
 @media only screen and (max-width: 816px) {
-  /* Modificaciones para el contenedor principal */
-  .container {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: center; /* Centra los elementos horizontalmente */
+  /* Modificaciones adicionales para el contenedor de asientos */
+  .seats-container {
+    width: 90%; /* Utiliza un ancho más grande para pantallas más pequeñas */
   }
-  
-  /* Modificaciones para el contenedor de películas */
-  .movies-container {
-    width: 80%; /* Utiliza un ancho más grande para contenedores de películas */
-  }
-  
-  /* Modificaciones para el contenedor del ticket */
-  .ticket-container {
-    width: 80%; /* Utiliza un ancho más grande para contenedores de tickets */
-  }
-  
-  /* Modificaciones para los botones de los asientos */
+
+  /* Modificaciones adicionales para los botones de los asientos */
   .seats-container button {
-    padding: 8px; /* Tamaño de padding inicial */
-    font-size: 14px; /* Tamaño de fuente inicial */
-    width: 40px; /* Ancho inicial */
-    margin: 4px; /* Margen inicial */
+    font-size: 12px; /* Reducir el tamaño del texto */
+    width: 30px; /* Reducir el ancho de los botones */
+    padding: 8px; /* Reducir el padding */
   }
 }
 
@@ -146,10 +136,9 @@
 @media only screen and (max-width: 600px) {
   /* Modificaciones adicionales para los botones de los asientos */
   .seats-container button {
-    padding: 6px; /* Reducir el padding */
-    font-size: 12px; /* Reducir el tamaño del texto */
-    width: 30px; /* Reducir el ancho de los botones */
-    margin: 3px; /* Reducir el margen */
+    font-size: 10px; /* Reducir aún más el tamaño del texto */
+    width: 20px; /* Reducir aún más el ancho de los botones */
+    padding: 6px; /* Reducir aún más el padding */
   }
 }
 
@@ -157,9 +146,8 @@
 @media only screen and (max-width: 400px) {
   /* Modificaciones adicionales para los botones de los asientos */
   .seats-container button {
-    padding: 4px; /* Reducir el padding */
-    font-size: 10px; /* Reducir aún más el tamaño del texto */
-    width: 20px; /* Reducir aún más el ancho de los botones */
-    margin: 2px; /* Reducir aún más el margen */
+    font-size: 8px; /* Reducir aún más el tamaño del texto */
+    width: 15px; /* Reducir aún más el ancho de los botones */
+    padding: 4px; /* Reducir aún más el padding */
   }
 }

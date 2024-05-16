@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
+const Ticket = ({ selectedMovie, selectedSeats, functions, onReturn }) => {
   const [purchased, setPurchased] = useState(false);
   const [error, setError] = useState(null);
 
@@ -66,6 +66,7 @@ const Ticket = ({ selectedMovie, selectedSeats, functions }) => {
       </div>
       {error && <p className="error">{error}</p>}
       <button className="purchase-button" onClick={handlePurchase} disabled={purchased}>Comprar boletos</button>
+      <button onClick={onReturn}>Regresar a selección de asientos</button>
     </div>
   );
 };
