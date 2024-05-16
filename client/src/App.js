@@ -26,10 +26,14 @@ const App = () => {
     setCurrentScreen('Movies');
   };
 
+  const handleReturnToSeats = () => {
+    setCurrentScreen('Seats');
+  };
+  
   const handleProceedToTicket = () => {
     setCurrentScreen('Ticket');
   };
-
+  
   return (
     <div className="container">
       {currentScreen === 'Movies' && (
@@ -40,8 +44,8 @@ const App = () => {
           selectedMovie={selectedMovie}
           setSelectedSeats={setSelectedSeats}
           selectedSeats={selectedSeats}
-          onReturn={handleReturnToMovies}
-          onProceedToTicket={handleProceedToTicket} // Pasar la función handleProceedToTicket como prop onProceedToTicket
+          onReturn={handleReturnToMovies} // Actualizar para usar handleReturnToSeats
+          onProceedToTicket={handleProceedToTicket}
         />
       )}
       {currentScreen === 'Ticket' && (
@@ -49,11 +53,11 @@ const App = () => {
           selectedMovie={selectedMovie}
           selectedSeats={selectedSeats}
           functions={functions}
-          onReturn={handleReturnToMovies}
+          onReturn={handleReturnToSeats} // Actualizar para usar handleReturnToSeats
         />
       )}
     </div>
   );
-};
+}
 
 export default App;
