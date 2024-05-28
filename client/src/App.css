@@ -4,19 +4,44 @@
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100vh; /* Utiliza toda la altura de la pantalla */
+  overflow: hidden; /* Evita el desbordamiento */
 }
 
 /* Estilos para el contenedor de películas */
 .movies-container {
-  width: 60%; /* Reducir el ancho del contenedor */
-  margin: 20px auto; /* Centrar horizontalmente */
+  width: 90%; /* Ancho del contenedor ajustado */
+  margin: 20px auto;
   padding: 20px;
   background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex; /* Convertir el contenedor en un contenedor flexible */
-  flex-direction: column; /* Alinear los elementos en una columna */
-  align-items: center; /* Centrar horizontalmente los elementos */
+  text-align: center; /* Centra el texto */
+  overflow: hidden; /* Evita el desbordamiento */
+}
+
+/* Estilos para el contenedor de botones de películas */
+.movie-buttons-container {
+  display: flex; /* Cambia el contenedor a un contenedor flexible */
+  flex-wrap: wrap; /* Permite que los botones envuelvan si no caben en una sola línea */
+  justify-content: center; /* Centra los botones horizontalmente */
+  overflow: auto; /* Permite el desplazamiento horizontal si es necesario */
+}
+
+/* Estilos para los botones de películas */
+.movie-button {
+  min-width: 250px; /* Cambiar width a min-width */
+  min-height: 450px; /* Altura mínima del botón */
+  margin: 20px; /* Espacio entre los botones */
+  padding: 20px; /* Espacio interno */
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en una columna */
+  align-items: center; /* Centra horizontalmente el contenido */
 }
 
 /* Estilos para el encabezado "Peliculas" */
@@ -24,22 +49,33 @@
   margin-bottom: 20px; /* Agregar espacio inferior */
 }
 
+/* Estilos para el póster de la película */
+.movie-poster {
+  width: 150px; /* Tamaño del póster ajustado */
+  height: 200px; /* Tamaño del póster ajustado */
+  margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Estilos para los detalles de la película */
+.movie-details {
+  text-align: center; /* Centra el texto */
+}
+
 /* Estilos para los botones de películas */
 .movie-button {
-  width: 200px; /* Ajustar el ancho de los botones */
-  height: 50px; /* Ajustar el alto de los botones */
-  margin: 10px; /* Agregar un margen entre los botones */
-  padding: 10px; /* Agregar un espacio interno */
-  background-color: #6c757d; /* Gris para botones de película */
+  width: auto; /* Ancho automático para adaptarse al contenido */
+  min-height: 350px; /* Altura del botón ajustada */
+  margin: 20px; /* Espacio entre los botones */
+  padding: 10px; /* Espacio interno */
+  background-color: #6c757d;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
-  text-decoration: none;
-  display: flex; /* Convertir el botón en un contenedor flexible */
-  justify-content: center; /* Centrar horizontalmente el contenido */
-  align-items: center; /* Centrar verticalmente el contenido */
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en una columna */
+  align-items: center; /* Centra horizontalmente el contenido */
 }
 
 /* Estilos para el texto dentro de los botones de películas */
@@ -69,7 +105,7 @@
   justify-content: center; /* Centra verticalmente */
 }
 
-/* Estilos para el contenedor adicional de los botonezs de los asientos */
+/* Estilos para el contenedor adicional de los botones de los asientos */
 .seats-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +142,15 @@
 /* Estilos para los botones de los asientos seleccionados */
 .seats-container .seat-btn.selected {
   background-color: #007bff;
+}
+
+/* Estilos para la pantalla del cine */
+.screen {
+  background-color: black;
+  width: 100%; /* Ancho igual al ancho de una columna menos el espacio entre columnas, con un margen adicional */
+  height: 20px; /* Altura de la pantalla */
+  margin: 20px 0; /* Margen para separarlo del contenido */
+  border-radius: 10px; /* Bordes redondeados */
 }
 
 /* Estilos para el botón de "Regresar" y "Comprar" */
@@ -160,23 +205,57 @@
   background-color: #0056b3;
 }
 
+/* Estilos para pantallas desde 817px hacia arriba */
+@media only screen and (min-width: 817px) {
+  /* Modificaciones para los botones de películas */
+  .movie-button {
+    width: 200px; /* Ancho fijo de 200px */
+    min-height: 350px; /* Altura del botón ajustada */
+    margin: 20px; /* Espacio entre los botones */
+    padding: 10px; /* Espacio interno */
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column; /* Alinea el contenido en una columna */
+    align-items: center; /* Centra horizontalmente el contenido */
+  }
+
+  .movie-poster {
+    width: 120px; /* Ajustar el tamaño del póster */
+    height: auto; /* Mantener la proporción */
+  }
+}
+
+
 /* Estilos para pantallas más pequeñas */
 @media only screen and (max-width: 816px) {
   /* Modificaciones adicionales para el contenedor de películas */
   .movies-container {
     width: 90%; /* Utilizar un ancho más grande para pantallas más pequeñas */
+    overflow: auto; /* Permite el desplazamiento si es necesario */
   }
 
   /* Modificaciones adicionales para los botones de películas */
   .movie-button {
-    width: 150px; /* Reducir el ancho de los botones */
-    height: 40px; /* Mantener el alto de los botones */
-    font-size: 14px; /* Mantener el tamaño de fuente */
+    width: 200px; /* Reducir el ancho de los botones */
+    min-height: 350px; /* Reducir la altura mínima de los botones */
+    font-size: 14px; /* Ajustar el tamaño de fuente */
+    padding: 15px; /* Ajustar el padding */
+  }
+
+  .movie-poster {
+    width: 120px; /* Ajustar el tamaño del póster */
+    height: auto; /* Mantener la proporción */
   }
 
   /* Modificaciones adicionales para el contenedor de asientos */
   .seats-container {
     width: 90%; /* Utiliza un ancho más grande para pantallas más pequeñas */
+    justify-content: center; /* Asegura que los elementos se mantengan centrados */
   }
 
   /* Modificaciones adicionales para los botones de los asientos */
@@ -185,22 +264,32 @@
     width: 30px; /* Reducir el ancho de los botones */
     padding: 8px; /* Reducir el padding */
   }
+
+  /* Modificaciones para el contenedor del ticket */
+  .ticket-container {
+    width: 80%; /* Ancho mayor para pantallas pequeñas */
+  }
 }
 
 /* Estilos para pantallas aún más pequeñas */
 @media only screen and (max-width: 600px) {
   /* Modificaciones adicionales para los botones de películas */
   .movie-button {
-    width: 120px; /* Reducir el ancho de los botones aún más */
-    height: 30px; /* Reducir el alto de los botones */
+    min-width: 150px; /* Reducir el ancho mínimo del botón */
+    min-height: 250px; /* Reducir la altura mínima de los botones */
     font-size: 12px; /* Reducir aún más el tamaño de fuente */
+    padding: 10px; /* Ajustar el padding */
+  }
+
+  .movie-poster {
+    width: 100px; /* Ajustar el tamaño del póster */
   }
 
   /* Modificaciones adicionales para los botones de los asientos */
   .seats-container .seat-btn {
     font-size: 10px; /* Reducir aún más el tamaño del texto */
-    width: 20px; /* Reducir aún más el ancho de los botones */
-    padding: 6px; /* Reducir aún más el padding */
+    width: 25px; /* Reducir el ancho de los botones */
+    padding: 6px; /* Ajustar el padding */
   }
 }
 
@@ -208,15 +297,25 @@
 @media only screen and (max-width: 400px) {
   /* Modificaciones adicionales para los botones de películas */
   .movie-button {
-    width: 100px; /* Reducir aún más el ancho de los botones */
-    height: 30px; /* Mantener el alto de los botones */
+    min-width: 120px; /* Reducir aún más el ancho mínimo del botón */
+    min-height: 200px; /* Reducir la altura mínima de los botones */
     font-size: 10px; /* Reducir aún más el tamaño de fuente */
+    padding: 8px; /* Ajustar el padding */
+  }
+
+  .movie-poster {
+    width: 80px; /* Ajustar el tamaño del póster */
   }
 
   /* Modificaciones adicionales para los botones de los asientos */
   .seats-container .seat-btn {
     font-size: 8px; /* Reducir aún más el tamaño del texto */
-    width: 15px; /* Reducir aún más el ancho de los botones */
-    padding: 4px; /* Reducir aún más el padding */
+    width: 20px; /* Reducir aún más el ancho de los botones */
+    padding: 4px; /* Ajustar el padding */
+  }
+
+  /* Modificaciones para el contenedor del ticket */
+  .ticket-container {
+    width: 90%; /* Ancho mayor para pantallas muy pequeñas */
   }
 }

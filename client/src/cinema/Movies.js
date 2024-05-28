@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Movies = ({ functions, setSelectedMovie, selectedMovie }) => {
   const handleMovieSelection = (movieId) => {
     setSelectedMovie(movieId);
@@ -6,15 +8,25 @@ const Movies = ({ functions, setSelectedMovie, selectedMovie }) => {
   return (
     <div className="movies-container">
       <h2>Películas</h2>
-      {functions.map(movie => (
-        <button
-          key={movie._id}
-          className={`movie-button ${selectedMovie === movie.function_id ? 'selected' : ''}`}
-          onClick={() => handleMovieSelection(movie.function_id)} // Usar movie.function_id en lugar de movie._id
-        >
-          {movie.movie_title}
-        </button>
-      ))}
+      <div className="movie-buttons-container">
+        {functions.map(movie => (
+          <button
+            key={movie.function_id}
+            className={`movie-button ${selectedMovie === movie.function_id ? 'selected' : ''}`}
+            onClick={() => handleMovieSelection(movie.function_id)}
+          >
+            <img
+              src={movie.movie_poster_url}
+              alt={movie.movie_title}
+              className="movie-poster"
+            />
+            <div className="movie-details">
+              <h3>{movie.movie_title}</h3>
+              <p>{movie.movie_description}</p>
+            </div>
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

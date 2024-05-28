@@ -61,7 +61,9 @@ const Seats = ({ selectedMovie, setSelectedSeats, selectedSeats, onReturn, onPro
   return (
     <div className="seats-container">
       <h2>Selecciona tus asientos</h2>
+       
       <div className="grid grid-cols-7 gap-2">
+        <div className="screen"></div>
         {organizedSeats.map((row, rowIndex) => (
           <div key={rowIndex} className="flex justify-center">
             {row.map(seat => (
